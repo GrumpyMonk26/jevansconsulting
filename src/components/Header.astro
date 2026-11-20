@@ -1,0 +1,25 @@
+
+---
+interface Props {
+  logoAlt?: string;
+}
+
+const { logoAlt = 'Jevans Consulting' } = Astro.props;
+---
+
+<header class="nav">
+  <a class="brand" href="#top" aria-label={`${logoAlt} home`}>
+    <img
+      src="/jevans-logo.png"
+      alt={logoAlt}
+      class="brand-logo"
+    />
+  </a>
+
+  <nav aria-label="Main navigation">
+    <a href="#packages">Packages</a>
+    <a href="#care">Care plans</a>
+    <a href="#process">Our process</a>
+    <a class="btn" href="#contact">Let's talk</a>
+  </nav>
+</header>

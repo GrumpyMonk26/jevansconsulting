@@ -1,0 +1,45 @@
+
+---
+const steps = [
+  {
+    title: 'Discover',
+    description:
+      "We start with a conversation about your business, your goals and what you want your website to achieve. I'll help establish the right approach for your project.",
+  },
+  {
+    title: 'Design & Build',
+    description:
+      "I'll bring your ideas to life, designing and developing a professional website that reflects your business, works across devices and delivers what your customers need.",
+  },
+  {
+    title: 'Review & Refine',
+    description:
+      "You'll have the opportunity to review your website, share feedback and request changes. We'll work together to make sure everything is looking and working as expected.",
+  },
+  {
+    title: 'Launch & Support',
+    description:
+      "Once you're happy, we'll arrange the final payment and get your website live. I'll also help you choose the right care plan to keep everything secure, maintained and running smoothly.",
+  },
+];
+---
+
+<section id="process" aria-labelledby="pr">
+  <div class="section-head">
+    <h2 id="pr">How it works</h2>
+    <p>
+      Getting your business online shouldn't be complicated.
+      My straightforward four-step process keeps you involved
+      from the initial conversation right through to launch and beyond.
+    </p>
+  </div>
+
+  <ol class="steps">
+    {steps.map((step) => (
+      <li>
+        <b>{step.title}</b>
+        <span>{step.description}</span>
+      </li>
+    ))}
+  </ol>
+</section>

@@ -1,0 +1,103 @@
+
+---
+interface Props {
+  audience: string;
+}
+
+const { audience } = Astro.props;
+---
+
+<section class="hero" aria-labelledby="hero-title">
+  <div>
+    <span class="hero-eyebrow">
+      WEB DESIGN & DIGITAL SUPPORT
+    </span>
+
+    <h1 id="hero-title">
+      Your business deserves a better online presence.
+    </h1>
+
+    <p class="lede">
+      Professional websites. Reliable support. Digital solutions
+      that help your business grow.
+    </p>
+
+    <p>
+      I help {audience} build a stronger presence online through
+      thoughtfully designed websites and dependable digital support.
+      Whether you need a brand-new website, improvements to an existing
+      one or someone to take care of the technical details, I'm here
+      to make things simpler.
+    </p>
+
+    <div class="actions">
+      <a class="btn" href="#packages">Explore packages</a>
+      <a class="btn ghost" href="#contact">Let's talk</a>
+    </div>
+  </div>
+
+  <!-- Previous project showcase - preserved -->
+  <div class="browser" aria-label="Preview of a previous Jevix Consulting project">
+    <div class="browser-bar">
+      <i></i><i></i><i></i>
+      <span>jevixconsulting.com</span>
+    </div>
+
+    <div class="jx">
+      <svg class="jx-net" viewBox="0 0 400 300"
+        preserveAspectRatio="xMidYMid slice">
+        <g stroke="#2f6fe0" stroke-opacity=".35" fill="none">
+          <path d="M30 70 L92 118 L68 196" />
+          <path d="M308 38 L352 92 L300 122 Z" />
+          <path d="M338 205 L384 262" />
+          <path d="M54 256 L124 224" />
+        </g>
+        <g fill="#3b9cf5" fill-opacity=".7">
+          <circle cx="30" cy="70" r="2.5" />
+          <circle cx="92" cy="118" r="2" />
+          <circle cx="68" cy="196" r="2" />
+          <circle cx="308" cy="38" r="2.5" />
+          <circle cx="352" cy="92" r="2" />
+          <circle cx="300" cy="122" r="2" />
+          <circle cx="338" cy="205" r="2" />
+          <circle cx="384" cy="262" r="2.5" />
+          <circle cx="54" cy="256" r="2" />
+          <circle cx="124" cy="224" r="2" />
+        </g>
+      </svg>
+
+      <div class="jx-nav">
+        <img class="jx-logo" src="/jevix-logo.png" alt="Jevix Consulting" />
+        <span>What we offer ⌄</span>
+        <span>About</span>
+        <b class="jx-btn sm">Contact</b>
+      </div>
+
+      <div class="jx-body">
+        <span class="jx-badge">Previous project</span>
+
+        <h4>
+          NetSuite project delivery, development, and support that
+          <em>scales with your business</em>
+        </h4>
+
+        <p>
+          Jevix Consulting helps NetSuite customers deliver projects,
+          build custom solutions and keep environments moving.
+        </p>
+
+        <div class="jx-actions">
+          <span class="jx-btn">Book a Consultation</span>
+          <span class="jx-btn ghost">View Services</span>
+        </div>
+
+        <div class="jx-pills">
+          <span>Project Delivery</span>
+          <span>Custom Development</span>
+          <span>Integrations</span>
+          <span>Support Packages</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

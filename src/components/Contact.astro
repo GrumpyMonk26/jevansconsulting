@@ -1,0 +1,25 @@
+
+---
+interface Props {
+  email: string;
+}
+
+const { email } = Astro.props;
+---
+
+<section id="contact" aria-labelledby="ct" class="contact-section">
+  <div class="contact">
+    <h2 id="ct">Let's talk about your business.</h2>
+
+    <p>
+      Whether you're looking for a brand-new website, need help improving
+      your existing one or simply want some advice, I'd love to hear from you.
+      Tell me a little about your business and what you're looking to achieve,
+      and we'll take it from there.
+    </p>
+
+    <a class="btn" href={`mailto:${email}?subject=${encodeURIComponent("Website enquiry")}`}>
+      Get in touch
+    </a>
+  </div>
+</section>

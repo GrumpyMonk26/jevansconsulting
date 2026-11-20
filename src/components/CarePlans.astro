@@ -1,0 +1,56 @@
+
+---
+const plans = [
+  {
+    name: 'Basic',
+    price: '£30–40',
+    text: 'The essentials, taken care of. Website hosting, SSL certificate, regular backups and security updates to keep your website protected and running smoothly.',
+  },
+  {
+    name: 'Plus',
+    price: '£60–80',
+    text: 'More support, less to worry about. Everything in Basic, plus up to 1 hour of website edits each month and uptime monitoring.',
+  },
+  {
+    name: 'Growth',
+    price: '£120–200',
+    text: 'Ongoing improvements for growing businesses. Everything in Plus, plus 2–3 hours of website updates and improvements, a monthly enquiry report and small SEO improvements.',
+  },
+];
+---
+
+<section id="care" aria-labelledby="cp">
+  <div class="section-head">
+    <h2 id="cp">Website care plans</h2>
+    <p>
+      Your website deserves attention long after launch.
+      My care plans take care of the technical details,
+      keeping your website secure, maintained and performing
+      as your business grows.
+    </p>
+    <p>
+      Simple monthly pricing, no long-term contracts and
+      just 30 days' notice if you decide to leave.
+    </p>
+  </div>
+
+  <div class="care-wrap">
+    <table class="care">
+      <caption class="sr-only">
+        Monthly website care plan options and prices
+      </caption>
+      <tbody>
+        {plans.map((plan) => (
+          <tr>
+            <th scope="row">{plan.name}</th>
+            <td class="p">
+              {plan.price}
+              <small> /month</small>
+            </td>
+            <td>{plan.text}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+</section>

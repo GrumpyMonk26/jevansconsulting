@@ -1,0 +1,21 @@
+---
+interface Props {
+  name?: string;
+}
+
+const { name = 'Jevans Consulting' } = Astro.props;
+---
+
+<footer>
+  <div class="footer-content">
+    <p class="footer-brand">{name}</p>
+    <p>Website design, development and ongoing digital support for small businesses.</p>
+  </div>
+
+  <div class="footer-bottom">
+    <p>
+      © {new Date().getFullYear()} {name}. All rights reserved.
+    </p>
+  </div>
+</footer>
+

@@ -1,0 +1,36 @@
+
+---
+const services = [
+  {
+    title: 'Website Design & Development',
+    text: 'Professional, responsive websites designed around your business and your customers. Built to showcase what you do, make a great first impression and turn visitors into enquiries.',
+  },
+  {
+    title: 'Get Found Online',
+    text: 'Give your business a stronger online presence with local SEO foundations, Google Business Profile setup and well-structured pages that help potential customers discover your services.',
+  },
+  {
+    title: 'Website Care & Ongoing Support',
+    text: "Keep your website secure, up to date and running smoothly. From hosting and backups to maintenance and content updates, I'll take care of the technical details so you don't have to.",
+  },
+];
+---
+
+<section aria-labelledby="what">
+  <div class="section-head">
+    <h2 id="what">How I can help</h2>
+    <p>
+      Everything your business needs to build a stronger online
+      presence, reach more customers and keep things running smoothly.
+    </p>
+  </div>
+
+  <div class="cols">
+    {services.map((service) => (
+      <article>
+        <h3>{service.title}</h3>
+        <p>{service.text}</p>
+      </article>
+    ))}
+  </div>
+</section>

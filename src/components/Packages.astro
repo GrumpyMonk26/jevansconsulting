@@ -1,0 +1,88 @@
+
+---
+const packages = [
+  {
+    name: 'Starter',
+    price: '£600–900',
+    for: 'Everything you need to get online.',
+    items: [
+      '1–3 professionally designed pages',
+      'Fully responsive, mobile-friendly design',
+      'Contact form',
+      'Google Business Profile setup',
+      '1 round of revisions',
+    ],
+  },
+  {
+    name: 'Standard',
+    price: '£1,200–1,800',
+    for: 'Everything your business needs to grow online.',
+    pick: true,
+    items: [
+      '4–6 professionally designed pages',
+      'Enquiry or booking form',
+      'Content refinement and copy polishing',
+      'Local SEO and Google Maps integration',
+      'Website analytics setup',
+      '2 rounds of revisions',
+    ],
+  },
+  {
+    name: 'Premium',
+    price: '£2,500–4,000',
+    for: 'A tailored website built around your ambitions.',
+    items: [
+      'Up to 10 professionally designed pages',
+      'Bespoke website design',
+      'Booking or payment integration',
+      'Blog or portfolio functionality',
+      'Content writing assistance',
+      '3 rounds of revisions',
+    ],
+  },
+];
+---
+
+<section id="packages" aria-labelledby="pk">
+  <div class="section-head">
+    <h2 id="pk">Website packages</h2>
+    <p>
+      Straightforward packages with transparent pricing.
+      Choose the level of website that suits your business,
+      with a clear understanding of what's included before
+      any work begins.
+    </p>
+    <p>
+      A 50% deposit secures your project, with the remaining
+      balance payable before your website goes live.
+    </p>
+  </div>
+
+  <div class="tiers">
+    {packages.map((item) => (
+      <article class:list={['tier', { pick: item.pick }]}>
+        {item.pick && <span class="tag">Most popular</span>}
+
+        <h3>{item.name}</h3>
+
+        <div class="price">{item.price}</div>
+
+        <p class="for">{item.for}</p>
+
+        <ul>
+          {item.items.map((feature) => (
+            <li>{feature}</li>
+          ))}
+        </ul>
+      </article>
+    ))}
+  </div>
+
+  <p class="extras">
+    <strong>Need something extra?</strong>
+    Additional pages from £80. Copywriting from £100 per page.
+    Logo design and branding from £250. Booking or payment
+    integration from £200. Additional work outside your
+    agreed package is charged at £50–£75 per hour.
+  </p>
+</section>
