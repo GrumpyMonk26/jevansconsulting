@@ -1,7 +1,3 @@
-
----
----
-
 <dialog id="contact-dialog" class="contact-dialog" aria-labelledby="contact-title">
   <div class="modal-header">
     <div>
@@ -20,7 +16,18 @@
     </button>
   </div>
 
-  <form id="contact-form">
+  <form
+    id="contact-form"
+    name="contact"
+    method="POST"
+    data-netlify="true"
+    data-netlify-honeypot="bot-field"
+  >
+    <input type="hidden" name="form-name" value="contact" />
+    <p hidden>
+      <label>Leave this empty: <input name="bot-field" /></label>
+    </p>
+
     <div class="form-grid">
       <div class="form-field">
         <label for="contact-name">Your name *</label>
@@ -81,12 +88,11 @@
       ></textarea>
     </div>
 
-    <button type="submit" class="btn modal-submit">
-      Send enquiry
-    </button>
+    <button type="submit" class="btn modal-submit">Send enquiry</button>
 
     <p class="form-note">
-      I'll aim to respond within one working day.
+      I'll aim to respond within one working day. I'll only use your details
+      to reply to your enquiry.
     </p>
 
     <p id="contact-status" class="contact-status" role="status" aria-live="polite"></p>
@@ -98,30 +104,57 @@
   const form = document.querySelector<HTMLFormElement>("#contact-form");
   const status = document.querySelector<HTMLParagraphElement>("#contact-status");
 
-  document.querySelectorAll<HTMLButtonElement>("[data-open-contact]").forEach((button) => {
+  document.querySelectorAll<HTMLElement>("[data-open-contact]").forEach((button) => {
     button.addEventListener("click", () => {
+      if (status) {
+        status.textContent = "";
+        delete status.dataset.state;
+      }
       dialog?.showModal();
     });
   });
 
-  document.querySelectorAll<HTMLButtonElement>("[data-close-contact]").forEach((button) => {
-    button.addEventListener("click", () => {
-      dialog?.close();
-    });
+  document.querySelectorAll<HTMLElement>("[data-close-contact]").forEach((button) => {
+    button.addEventListener("click", () => dialog?.close());
   });
 
+  // Clicking the dark backdrop closes the dialog.
   dialog?.addEventListener("click", (event) => {
-    if (event.target === dialog) {
-      dialog.close();
-    }
+    if (event.target === dialog) dialog.close();
   });
 
-  form?.addEventListener("submit", (event) => {
+  form?.addEventListener("submit", async (event) => {
     event.preventDefault();
+    if (!form || !status) return;
 
-    if (status) {
+    const submit = form.querySelector<HTMLButtonElement>('button[type="submit"]');
+    if (submit) submit.disabled = true;
+    status.textContent = "Sending...";
+    delete status.dataset.state;
+
+    try {
+      const body = new URLSearchParams(
+        new FormData(form) as unknown as Record<string, string>
+      ).toString();
+
+      const response = await fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body,
+      });
+
+      if (!response.ok) throw new Error(`Form submit failed: ${response.status}`);
+
+      form.reset();
       status.textContent =
-        "The form is ready, but email delivery hasn't been connected yet. We'll set that up next.";
+        "Thanks, your message has been sent. I'll reply within one working day.";
+      status.dataset.state = "success";
+    } catch {
+      status.textContent =
+        "Sorry, something went wrong sending your message. Please try again in a moment.";
+      status.dataset.state = "error";
+    } finally {
+      if (submit) submit.disabled = false;
     }
   });
 </script>
