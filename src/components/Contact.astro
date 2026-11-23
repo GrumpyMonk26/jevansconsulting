@@ -18,8 +18,8 @@ const { email } = Astro.props;
       and we'll take it from there.
     </p>
 
-    <a class="btn" href={`mailto:${email}?subject=${encodeURIComponent("Website enquiry")}`}>
-      Get in touch
-    </a>
+<button type="button" class="btn" data-open-contact>
+  Get in touch
+</button>
   </div>
 </section>

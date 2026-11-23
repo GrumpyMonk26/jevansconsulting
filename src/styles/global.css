@@ -686,3 +686,147 @@ footer {
 .contact-section {
   padding-bottom: 0;
 }
+
+/* ========================================
+   CONTACT MODAL
+======================================== */
+
+.contact-dialog {
+  width: min(600px, calc(100% - 32px));
+  max-height: 90dvh;
+  overflow-y: auto;
+  margin: auto;
+  padding: 0;
+  border: 1px solid #e2e8f0;
+  border-radius: 18px;
+  background: #ffffff;
+  color: #172b4d;
+  box-shadow: 0 24px 80px rgb(0 0 0 / 20%);
+}
+
+.contact-dialog::backdrop {
+  background: rgb(10 20 40 / 65%);
+  backdrop-filter: blur(4px);
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 30px 30px 20px;
+}
+
+.modal-eyebrow {
+  color: #2878d0;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
+.modal-header h2 {
+  margin: 10px 0;
+  font-size: clamp(1.5rem, 4vw, 2rem);
+}
+
+.modal-header p {
+  margin: 0;
+  color: #64748b;
+  line-height: 1.6;
+}
+
+.modal-close {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  border: 0;
+  border-radius: 50%;
+  background: #f1f5f9;
+  color: #172b4d;
+  font-size: 1.6rem;
+  cursor: pointer;
+}
+
+#contact-form {
+  display: grid;
+  gap: 18px;
+  padding: 10px 30px 30px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.form-field {
+  display: grid;
+  gap: 7px;
+}
+
+.form-field label {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.form-field input,
+.form-field select,
+.form-field textarea {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px 14px;
+  border: 1px solid #dbe3ed;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #172b4d;
+  font: inherit;
+  font-size: 0.95rem;
+}
+
+.form-field input:focus,
+.form-field select:focus,
+.form-field textarea:focus {
+  outline: 2px solid #2878d0;
+  outline-offset: 2px;
+  border-color: #2878d0;
+}
+
+.form-field textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.modal-submit {
+  width: 100%;
+  border: 0;
+  cursor: pointer;
+  font: inherit;
+}
+
+.form-note {
+  margin: -8px 0 0;
+  color: #64748b;
+  font-size: 0.8rem;
+  text-align: center;
+}
+
+.contact-status {
+  margin: 0;
+  color: #2878d0;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+/* Mobile layout */
+@media (max-width: 520px) {
+  .modal-header {
+    padding: 24px 20px 16px;
+  }
+
+  #contact-form {
+    padding: 10px 20px 24px;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+}

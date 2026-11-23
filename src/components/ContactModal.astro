@@ -1,0 +1,127 @@
+
+---
+---
+
+<dialog id="contact-dialog" class="contact-dialog" aria-labelledby="contact-title">
+  <div class="modal-header">
+    <div>
+      <span class="modal-eyebrow">JEVANS CONSULTING</span>
+      <h2 id="contact-title">Let's talk about your project.</h2>
+      <p>Tell me a little about what you need and I'll get back to you.</p>
+    </div>
+
+    <button
+      type="button"
+      class="modal-close"
+      data-close-contact
+      aria-label="Close contact form"
+    >
+      &times;
+    </button>
+  </div>
+
+  <form id="contact-form">
+    <div class="form-grid">
+      <div class="form-field">
+        <label for="contact-name">Your name *</label>
+        <input
+          type="text"
+          id="contact-name"
+          name="name"
+          placeholder="Enter your name"
+          autocomplete="name"
+          required
+        />
+      </div>
+
+      <div class="form-field">
+        <label for="contact-email">Email address *</label>
+        <input
+          type="email"
+          id="contact-email"
+          name="email"
+          placeholder="you@example.com"
+          autocomplete="email"
+          required
+        />
+      </div>
+    </div>
+
+    <div class="form-field">
+      <label for="contact-business">Business name</label>
+      <input
+        type="text"
+        id="contact-business"
+        name="business"
+        placeholder="Your business name (optional)"
+        autocomplete="organization"
+      />
+    </div>
+
+    <div class="form-field">
+      <label for="contact-service">What can I help you with? *</label>
+      <select id="contact-service" name="service" required>
+        <option value="" disabled selected>Select a service</option>
+        <option value="New website design">New website design</option>
+        <option value="Existing website improvements">Existing website improvements</option>
+        <option value="Website care and maintenance">Website care and maintenance</option>
+        <option value="SEO and online presence">SEO and online presence</option>
+        <option value="Something else">Something else</option>
+      </select>
+    </div>
+
+    <div class="form-field">
+      <label for="contact-message">Tell me about your project *</label>
+      <textarea
+        id="contact-message"
+        name="message"
+        rows="5"
+        placeholder="A few details about what you're looking for..."
+        required
+      ></textarea>
+    </div>
+
+    <button type="submit" class="btn modal-submit">
+      Send enquiry
+    </button>
+
+    <p class="form-note">
+      I'll aim to respond within one working day.
+    </p>
+
+    <p id="contact-status" class="contact-status" role="status" aria-live="polite"></p>
+  </form>
+</dialog>
+
+<script>
+  const dialog = document.querySelector<HTMLDialogElement>("#contact-dialog");
+  const form = document.querySelector<HTMLFormElement>("#contact-form");
+  const status = document.querySelector<HTMLParagraphElement>("#contact-status");
+
+  document.querySelectorAll<HTMLButtonElement>("[data-open-contact]").forEach((button) => {
+    button.addEventListener("click", () => {
+      dialog?.showModal();
+    });
+  });
+
+  document.querySelectorAll<HTMLButtonElement>("[data-close-contact]").forEach((button) => {
+    button.addEventListener("click", () => {
+      dialog?.close();
+    });
+  });
+
+  dialog?.addEventListener("click", (event) => {
+    if (event.target === dialog) {
+      dialog.close();
+    }
+  });
+
+  form?.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    if (status) {
+      status.textContent =
+        "The form is ready, but email delivery hasn't been connected yet. We'll set that up next.";
+    }
+  });
+</script>
