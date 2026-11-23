@@ -4,17 +4,35 @@ const plans = [
   {
     name: 'Basic',
     price: '£30–40',
-    text: 'The essentials, taken care of. Website hosting, SSL certificate, regular backups and security updates to keep your website protected and running smoothly.',
+    description: 'The essentials, taken care of.',
+    features: [
+      'Website hosting',
+      'SSL certificate',
+      'Regular backups',
+      'Security updates',
+    ],
   },
   {
     name: 'Plus',
     price: '£60–80',
-    text: 'More support, less to worry about. Everything in Basic, plus up to 1 hour of website edits each month and uptime monitoring.',
+    description: 'More support, less to worry about.',
+    popular: true,
+    features: [
+      'Everything in Basic',
+      'Up to 1 hour of website edits each month',
+      'Uptime monitoring',
+    ],
   },
   {
     name: 'Growth',
     price: '£120–200',
-    text: 'Ongoing improvements for growing businesses. Everything in Plus, plus 2–3 hours of website updates and improvements, a monthly enquiry report and small SEO improvements.',
+    description: 'Ongoing improvements for growing businesses.',
+    features: [
+      'Everything in Plus',
+      '2–3 hours of website updates and improvements',
+      'Monthly enquiry report',
+      'Small SEO improvements',
+    ],
   },
 ];
 ---
@@ -34,23 +52,37 @@ const plans = [
     </p>
   </div>
 
-  <div class="care-wrap">
-    <table class="care">
-      <caption class="sr-only">
-        Monthly website care plan options and prices
-      </caption>
-      <tbody>
-        {plans.map((plan) => (
-          <tr>
-            <th scope="row">{plan.name}</th>
-            <td class="p">
-              {plan.price}
-              <small> /month</small>
-            </td>
-            <td>{plan.text}</td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
+  <div class="care-tiers">
+    {plans.map((plan) => (
+      <article class:list={['tier', { pick: plan.popular }]}>
+        {plan.popular && (
+          <span class="tag">Most popular</span>
+        )}
+
+        <h3>{plan.name}</h3>
+
+        <p class="price">
+          {plan.price}
+          <small> /month</small>
+        </p>
+
+        <p class="for">{plan.description}</p>
+
+        <ul>
+          {plan.features.map((feature) => (
+            <li>{feature}</li>
+          ))}
+        </ul>
+
+        <button
+          type="button"
+          class="btn care-choose"
+          data-open-contact
+          data-care-plan={plan.name}
+        >
+          Choose {plan.name}
+        </button>
+      </article>
+    ))}
   </div>
 </section>
