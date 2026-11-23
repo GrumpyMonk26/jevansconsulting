@@ -24,9 +24,12 @@
     data-netlify-honeypot="bot-field"
   >
     <input type="hidden" name="form-name" value="contact" />
+    <input type="hidden" id="contact-interest-input" name="interest" value="" />
     <p hidden>
       <label>Leave this empty: <input name="bot-field" /></label>
     </p>
+
+    <p id="contact-interest" class="contact-interest" hidden></p>
 
     <div class="form-grid">
       <div class="form-field">
@@ -103,6 +106,10 @@
   const dialog = document.querySelector<HTMLDialogElement>("#contact-dialog");
   const form = document.querySelector<HTMLFormElement>("#contact-form");
   const status = document.querySelector<HTMLParagraphElement>("#contact-status");
+  const select = document.querySelector<HTMLSelectElement>("#contact-service");
+  const interestInput = document.querySelector<HTMLInputElement>("#contact-interest-input");
+  const interestNote = document.querySelector<HTMLParagraphElement>("#contact-interest");
+  let autoService = "";
 
   document.querySelectorAll<HTMLElement>("[data-open-contact]").forEach((button) => {
     button.addEventListener("click", () => {
@@ -110,6 +117,26 @@
         status.textContent = "";
         delete status.dataset.state;
       }
+
+      // Buttons like "Choose Plus" tell the form which package or plan was picked.
+      const interest = button.dataset.interest ?? "";
+      const service = button.dataset.service ?? "";
+
+      if (interestInput) interestInput.value = interest;
+      if (interestNote) {
+        interestNote.textContent = interest ? `Enquiring about: ${interest}` : "";
+        interestNote.hidden = !interest;
+      }
+      if (select) {
+        if (service) {
+          select.value = service;
+          autoService = service;
+        } else if (autoService && select.value === autoService) {
+          select.value = "";
+          autoService = "";
+        }
+      }
+
       dialog?.showModal();
     });
   });
@@ -146,6 +173,12 @@
       if (!response.ok) throw new Error(`Form submit failed: ${response.status}`);
 
       form.reset();
+      if (interestInput) interestInput.value = "";
+      if (interestNote) {
+        interestNote.textContent = "";
+        interestNote.hidden = true;
+      }
+      autoService = "";
       status.textContent =
         "Thanks, your message has been sent. I'll reply within one working day.";
       status.dataset.state = "success";

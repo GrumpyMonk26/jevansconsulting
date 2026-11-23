@@ -1,25 +1,24 @@
-
 ---
 const steps = [
   {
     title: 'Discover',
     description:
-      "We start with a conversation about your business, your goals and what you want your website to achieve. I'll help establish the right approach for your project.",
+      "We talk through your business, your goals and what your website needs to do. You get a clear plan and price.",
   },
   {
     title: 'Design & Build',
     description:
-      "I'll bring your ideas to life, designing and developing a professional website that reflects your business, works across devices and delivers what your customers need.",
+      "I design and build your website so it looks right on every device and does what your customers need.",
   },
   {
     title: 'Review & Refine',
     description:
-      "You'll have the opportunity to review your website, share feedback and request changes. We'll work together to make sure everything is looking and working as expected.",
+      "You review it, share your feedback and I make the changes. Your package includes a set number of revisions.",
   },
   {
     title: 'Launch & Support',
     description:
-      "Once you're happy, we'll arrange the final payment and get your website live. I'll also help you choose the right care plan to keep everything secure, maintained and running smoothly.",
+      "Once you're happy, the final payment is made and your website goes live. I'll help you choose a care plan to keep it secure and up to date.",
   },
 ];
 ---
@@ -34,11 +33,11 @@ const steps = [
     </p>
   </div>
 
-  <ol class="steps">
+  <ol class="timeline">
     {steps.map((step) => (
       <li>
-        <b>{step.title}</b>
-        <span>{step.description}</span>
+        <h3>{step.title}</h3>
+        <p>{step.description}</p>
       </li>
     ))}
   </ol>

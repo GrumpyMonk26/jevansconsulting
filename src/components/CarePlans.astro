@@ -1,11 +1,10 @@
-
 ---
 const plans = [
   {
     name: 'Basic',
     price: '£30–40',
-    description: 'The essentials, taken care of.',
-    features: [
+    for: 'The essentials, taken care of.',
+    items: [
       'Website hosting',
       'SSL certificate',
       'Regular backups',
@@ -15,9 +14,9 @@ const plans = [
   {
     name: 'Plus',
     price: '£60–80',
-    description: 'More support, less to worry about.',
-    popular: true,
-    features: [
+    for: 'More support, less to worry about.',
+    pick: true,
+    items: [
       'Everything in Basic',
       'Up to 1 hour of website edits each month',
       'Uptime monitoring',
@@ -26,10 +25,10 @@ const plans = [
   {
     name: 'Growth',
     price: '£120–200',
-    description: 'Ongoing improvements for growing businesses.',
-    features: [
+    for: 'Ongoing improvements for growing businesses.',
+    items: [
       'Everything in Plus',
-      '2–3 hours of website updates and improvements',
+      '2–3 hours of updates and improvements each month',
       'Monthly enquiry report',
       'Small SEO improvements',
     ],
@@ -52,33 +51,29 @@ const plans = [
     </p>
   </div>
 
-  <div class="care-tiers">
+  <div class="tiers">
     {plans.map((plan) => (
-      <article class:list={['tier', { pick: plan.popular }]}>
-        {plan.popular && (
-          <span class="tag">Most popular</span>
-        )}
+      <article class:list={['tier', { pick: plan.pick }]}>
+        {plan.pick && <span class="tag">Most popular</span>}
 
         <h3>{plan.name}</h3>
 
-        <p class="price">
-          {plan.price}
-          <small> /month</small>
-        </p>
+        <div class="price">{plan.price}<small> /month</small></div>
 
-        <p class="for">{plan.description}</p>
+        <p class="for">{plan.for}</p>
 
         <ul>
-          {plan.features.map((feature) => (
+          {plan.items.map((feature) => (
             <li>{feature}</li>
           ))}
         </ul>
 
         <button
           type="button"
-          class="btn care-choose"
+          class="btn"
           data-open-contact
-          data-care-plan={plan.name}
+          data-interest={`${plan.name} care plan`}
+          data-service="Website care and maintenance"
         >
           Choose {plan.name}
         </button>

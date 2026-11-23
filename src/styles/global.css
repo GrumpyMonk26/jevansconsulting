@@ -474,43 +474,6 @@ section {
   color: var(--muted);
 }
 
-/* process: this really is a sequence, so it is numbered */
-.steps {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1.5rem;
-  counter-reset: s;
-}
-.steps li {
-  counter-increment: s;
-  border-top: 3px solid var(--ink);
-  padding-top: 1rem;
-}
-.steps li::before {
-  content: counter(s);
-  display: block;
-  font: 800 1.6rem var(--display);
-  color: var(--cobalt);
-  margin-bottom: 0.25rem;
-}
-.steps b {
-  display: block;
-  font: 700 1.1rem var(--display);
-  margin-bottom: 0.25rem;
-}
-.steps span {
-  color: var(--muted);
-  font-size: 0.97rem;
-}
-@media (max-width: 860px) {
-  .steps {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
 /* contact */
 .contact {
   background: var(--ink);
@@ -779,4 +742,94 @@ body:has(dialog[open]) {
 .modal-submit:disabled {
   opacity: 0.6;
   cursor: wait;
+}
+
+/* care plan cards reuse the .tier layout */
+.tier ul {
+  flex: 1;
+}
+.tier .btn {
+  margin-top: 1.75rem;
+  text-align: center;
+}
+.price small {
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 0;
+  color: var(--muted);
+}
+.tier.pick .price small {
+  color: #aab6d8;
+}
+
+/* process timeline */
+.timeline {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  counter-reset: step;
+}
+.timeline li {
+  position: relative;
+  counter-increment: step;
+}
+.timeline li::before {
+  content: counter(step);
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--cobalt);
+  color: var(--white);
+  font: 800 1.1rem var(--display);
+}
+.timeline li:last-child::before {
+  background: var(--sun);
+  color: var(--ink);
+}
+.timeline li:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 21px;
+  left: 56px;
+  width: calc(100% - 44px);
+  height: 2px;
+  background: rgba(44, 82, 245, 0.35);
+}
+.timeline h3 {
+  margin: 1.1rem 0 0.4rem;
+  font-size: 1.2rem;
+}
+.timeline p {
+  color: var(--muted);
+  font-size: 0.97rem;
+}
+
+@media (max-width: 860px) {
+  .timeline {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  .timeline li {
+    padding: 0 0 2rem 4rem;
+  }
+  .timeline li::before {
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+  .timeline li:not(:last-child)::after {
+    top: 52px;
+    bottom: 8px;
+    left: 21px;
+    width: 2px;
+    height: auto;
+  }
+  .timeline h3 {
+    margin-top: 0.5rem;
+  }
 }
