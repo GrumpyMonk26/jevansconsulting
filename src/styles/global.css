@@ -833,3 +833,104 @@ body:has(dialog[open]) {
     margin-top: 0.5rem;
   }
 }
+
+/* ---------- section backgrounds ---------- */
+
+/* the hero glow can poke past the page edge, so stop sideways scrolling */
+body {
+  overflow-x: clip;
+}
+
+/* Full-width bands. The shadow and clip-path stretch each background
+   beyond the centred .wrap without changing your markup. */
+section[aria-labelledby="what"],
+#care,
+#process,
+#contact {
+  background: var(--band);
+  box-shadow: 0 0 0 100vmax var(--band);
+  clip-path: inset(0 -100vmax);
+}
+section[aria-labelledby="what"],
+#process {
+  --band: var(--white);
+}
+#care {
+  --band: #eaf0ff;
+}
+#contact {
+  --band: var(--ink);
+}
+
+/* hero glow behind the mockup */
+.hero {
+  position: relative;
+  isolation: isolate;
+}
+.hero::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 50%;
+  right: -4%;
+  width: 620px;
+  height: 620px;
+  transform: translateY(-50%);
+  border-radius: 50%;
+  background: radial-gradient(
+    closest-side,
+    rgba(44, 82, 245, 0.2),
+    rgba(44, 82, 245, 0)
+  );
+  pointer-events: none;
+}
+@media (max-width: 860px) {
+  .hero::before {
+    top: auto;
+    bottom: -10%;
+    right: -20%;
+    width: 440px;
+    height: 440px;
+    transform: none;
+  }
+}
+
+/* contact becomes a full-width navy band instead of a card */
+#contact.contact-section {
+  padding: 5rem 0;
+}
+.contact {
+  padding: 0;
+  margin-bottom: 0;
+  border-radius: 0;
+  background: transparent;
+}
+footer {
+  padding-top: 3rem;
+}
+
+/* white header bar, sticky on larger screens */
+.nav {
+  background: var(--white);
+  box-shadow:
+    0 0 0 100vmax var(--white),
+    0 1px 0 100vmax var(--line);
+  clip-path: inset(0 -100vmax -1px);
+}
+@media (min-width: 721px) {
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+  }
+}
+
+/* stop anchor links landing underneath the sticky header */
+html {
+  scroll-padding-top: 6rem;
+}
+@media (max-width: 720px) {
+  html {
+    scroll-padding-top: 1rem;
+  }
+}
