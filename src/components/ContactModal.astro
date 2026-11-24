@@ -110,9 +110,11 @@
   const interestInput = document.querySelector<HTMLInputElement>("#contact-interest-input");
   const interestNote = document.querySelector<HTMLParagraphElement>("#contact-interest");
   let autoService = "";
+  let closeTimer: number | undefined;
 
   document.querySelectorAll<HTMLElement>("[data-open-contact]").forEach((button) => {
     button.addEventListener("click", () => {
+      window.clearTimeout(closeTimer);
       if (status) {
         status.textContent = "";
         delete status.dataset.state;
@@ -144,6 +146,9 @@
   document.querySelectorAll<HTMLElement>("[data-close-contact]").forEach((button) => {
     button.addEventListener("click", () => dialog?.close());
   });
+
+  // Cancel any pending auto-close if the dialog is closed or reopened by hand.
+  dialog?.addEventListener("close", () => window.clearTimeout(closeTimer));
 
   // Clicking the dark backdrop closes the dialog.
   dialog?.addEventListener("click", (event) => {
@@ -182,6 +187,9 @@
       status.textContent =
         "Thanks, your message has been sent. I'll reply within one working day.";
       status.dataset.state = "success";
+
+      // Close the dialog a few seconds after the success message appears.
+      closeTimer = window.setTimeout(() => dialog?.close(), 4000);
     } catch {
       status.textContent =
         "Sorry, something went wrong sending your message. Please try again in a moment.";
