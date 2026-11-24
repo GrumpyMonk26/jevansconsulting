@@ -934,3 +934,76 @@ html {
     scroll-padding-top: 1rem;
   }
 }
+
+/* Contact modal refinements */
+
+.contact-dialog {
+  width: min(620px, calc(100% - 32px));
+  max-height: min(90dvh, 850px);
+  border-radius: 20px;
+}
+
+.modal-header {
+  align-items: flex-start;
+}
+
+.modal-logo {
+  display: block;
+  width: 180px;
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+  margin-bottom: 1.5rem;
+}
+
+.modal-header h2 {
+  margin: 0 0 0.75rem;
+}
+
+.modal-close {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  transition:
+    background 0.15s ease,
+    transform 0.15s ease;
+}
+
+.modal-close:hover {
+  background: var(--line);
+  transform: rotate(90deg);
+}
+
+.contact-interest {
+  padding: 0.75rem 1rem;
+  border-radius: 10px;
+  background: var(--paper);
+  color: var(--ink);
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.modal-submit {
+  padding: 0.95rem 1.4rem;
+}
+
+.modal-submit:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+@media (max-width: 520px) {
+  .contact-dialog {
+    width: calc(100% - 20px);
+    max-height: 92dvh;
+  }
+
+  .modal-logo {
+    width: 145px;
+    margin-bottom: 1.25rem;
+  }
+
+  .modal-header {
+    gap: 12px;
+  }
+}
