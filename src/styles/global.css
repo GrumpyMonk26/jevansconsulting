@@ -383,44 +383,40 @@ section {
 .about-link:hover {
   color: var(--cobalt);
 }
+
 .about-photo {
   position: relative;
   margin: 0 auto;
   width: 100%;
   max-width: 350px;
-  height: 480px;
+  height: auto;
   min-width: 0;
   border-radius: 24px;
   overflow: hidden;
-  background: var(--paper);
+  background: var(--white);
   box-shadow: 0 22px 55px rgba(16, 26, 51, 0.14);
   isolation: isolate;
 }
+
 .about-photo img {
   display: block;
   width: 100%;
-  height: 100%;
+  height: 420px;
   object-fit: cover;
   object-position: center 38%;
 }
-.about-photo img {
-  display: block;
-  width: 100%;
-  aspect-ratio: 4 / 5;
-  object-fit: cover;
-  object-position: center 38%;
-}
+
+/* Caption below the photograph */
 .about-photo figcaption {
-  position: absolute;
-  z-index: 1;
-  right: 1.25rem;
-  bottom: 1.25rem;
-  left: 1.25rem;
+  position: static;
   display: flex;
   align-items: center;
   gap: 0.85rem;
-  color: var(--white);
+  padding: 1rem 1.25rem;
+  color: var(--ink);
+  background: var(--white);
 }
+
 .about-photo-mark {
   display: grid;
   place-items: center;
@@ -432,29 +428,39 @@ section {
   color: var(--ink);
   font: 800 1.4rem var(--display);
 }
+
 .about-photo figcaption strong,
 .about-photo figcaption small {
   display: block;
 }
+
 .about-photo figcaption strong {
   font-size: 1rem;
 }
+
 .about-photo figcaption small {
   margin-top: 0.15rem;
-  color: rgba(255, 255, 255, 0.86);
+  color: var(--muted);
   font-size: 0.85rem;
 }
+
 @media (max-width: 860px) {
   .about-layout {
     grid-template-columns: 1fr;
   }
+
   .about-copy h2 {
     max-width: 18ch;
   }
+
   .about-photo {
     width: min(100%, 350px);
-    height: 440px;
+    height: auto;
     justify-self: center;
+  }
+
+  .about-photo img {
+    height: 380px;
   }
 }
 
@@ -980,6 +986,7 @@ body {
 
 /* Full-width bands. The shadow and clip-path stretch each background
    beyond the centred .wrap without changing your markup. */
+/* Section backgrounds */
 section[aria-labelledby="what"],
 #about,
 #care,
@@ -989,14 +996,24 @@ section[aria-labelledby="what"],
   box-shadow: 0 0 0 100vmax var(--band);
   clip-path: inset(0 -100vmax);
 }
-section[aria-labelledby="what"],
-#about,
-#process {
+
+/* About – white background */
+#about {
   --band: var(--white);
 }
+
+/* Services and process – subtle grey background */
+section[aria-labelledby="what"],
+#process {
+  --band: var(--paper);
+}
+
+/* Care plans – pale blue background */
 #care {
   --band: #eaf0ff;
 }
+
+/* Contact – navy background */
 #contact {
   --band: var(--ink);
 }
