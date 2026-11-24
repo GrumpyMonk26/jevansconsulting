@@ -1,8 +1,21 @@
+---
+interface Props {
+  logoAlt?: string;
+}
+
+const { logoAlt = 'Jevans Consulting' } = Astro.props;
+---
+
 <dialog id="contact-dialog" class="contact-dialog" aria-labelledby="contact-title">
   <div class="modal-header">
     <div>
-      <span class="modal-eyebrow">JEVANS CONSULTING</span>
-      <h2 id="contact-title">Let's talk about your project.</h2>
+      <!-- <span class="modal-eyebrow">JEVANS CONSULTING</span> -->
+      <img
+      src="/jevans-logo.png"
+      alt={logoAlt}
+      class="brand-logo"
+    />
+      <h2 id="contact-title">Let's talk about your project</h2>
       <p>Tell me a little about what you need and I'll get back to you.</p>
     </div>
 
