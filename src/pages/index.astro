@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Hero from '../components/Hero.astro';
+import About from '../components/About.astro';
 import Services from '../components/Services.astro';
 import Packages from '../components/Packages.astro';
 import CarePlans from '../components/CarePlans.astro';
@@ -20,6 +21,7 @@ const description = `Fast, simple websites for ${audience}, with clear pricing a
     <Header />
     <main id="top">
       <Hero audience={audience} />
+      <About />
       <Services />
       <Packages />
       <CarePlans />

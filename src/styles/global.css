@@ -337,6 +337,127 @@ section {
   color: #8da0c4;
 }
 
+/* about */
+#about {
+  --band: var(--white);
+}
+.about-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(300px, 0.8fr);
+  gap: clamp(2.5rem, 6vw, 5.5rem);
+  align-items: center;
+}
+.about-eyebrow,
+.about-panel-kicker {
+  display: inline-block;
+  color: var(--cobalt);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+.about-copy h2 {
+  max-width: 14ch;
+  margin-top: 0.8rem;
+}
+.about-lede {
+  color: var(--muted);
+  font-size: 1.2rem;
+  margin: 1.2rem 0 1.4rem;
+}
+.about-copy > p:not(.about-lede) {
+  color: var(--muted);
+  margin-top: 1rem;
+}
+.about-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.4rem;
+  margin-top: 1.8rem;
+}
+.about-link {
+  color: var(--ink);
+  font-weight: 700;
+  text-decoration: none;
+}
+.about-link:hover {
+  color: var(--cobalt);
+}
+.about-photo {
+  position: relative;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 350px;
+  height: 480px;
+  min-width: 0;
+  border-radius: 24px;
+  overflow: hidden;
+  background: var(--paper);
+  box-shadow: 0 22px 55px rgba(16, 26, 51, 0.14);
+  isolation: isolate;
+}
+.about-photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 38%;
+}
+.about-photo img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: center 38%;
+}
+.about-photo figcaption {
+  position: absolute;
+  z-index: 1;
+  right: 1.25rem;
+  bottom: 1.25rem;
+  left: 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  color: var(--white);
+}
+.about-photo-mark {
+  display: grid;
+  place-items: center;
+  flex: 0 0 48px;
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  background: var(--sun);
+  color: var(--ink);
+  font: 800 1.4rem var(--display);
+}
+.about-photo figcaption strong,
+.about-photo figcaption small {
+  display: block;
+}
+.about-photo figcaption strong {
+  font-size: 1rem;
+}
+.about-photo figcaption small {
+  margin-top: 0.15rem;
+  color: rgba(255, 255, 255, 0.86);
+  font-size: 0.85rem;
+}
+@media (max-width: 860px) {
+  .about-layout {
+    grid-template-columns: 1fr;
+  }
+  .about-copy h2 {
+    max-width: 18ch;
+  }
+  .about-photo {
+    width: min(100%, 350px);
+    height: 440px;
+    justify-self: center;
+  }
+}
+
 /* services */
 .cols {
   display: grid;
@@ -860,6 +981,7 @@ body {
 /* Full-width bands. The shadow and clip-path stretch each background
    beyond the centred .wrap without changing your markup. */
 section[aria-labelledby="what"],
+#about,
 #care,
 #process,
 #contact {
@@ -868,6 +990,7 @@ section[aria-labelledby="what"],
   clip-path: inset(0 -100vmax);
 }
 section[aria-labelledby="what"],
+#about,
 #process {
   --band: var(--white);
 }
