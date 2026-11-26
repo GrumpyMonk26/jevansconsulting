@@ -17,7 +17,17 @@ const homeHref = Astro.url.pathname === '/' ? '' : '/';
     />
   </a>
 
-  <nav aria-label="Main navigation">
+  <button
+    type="button"
+    class="nav-toggle"
+    aria-expanded="false"
+    aria-controls="main-navigation"
+    aria-label="Open navigation menu"
+  >
+    <span></span><span></span><span></span>
+  </button>
+
+  <nav id="main-navigation" aria-label="Main navigation">
     <a href="/projects/">Previous projects</a>
     <a href={homeHref + '#packages'}>Packages</a>
     <a href={homeHref + '#care'}>Care plans</a>
@@ -27,3 +37,26 @@ const homeHref = Astro.url.pathname === '/' ? '' : '/';
 </button>
   </nav>
 </header>
+
+<script>
+  const toggle = document.querySelector<HTMLButtonElement>(".nav-toggle");
+  const navigation = document.querySelector<HTMLElement>("#main-navigation");
+
+  const setMenuOpen = (open: boolean) => {
+    toggle?.setAttribute("aria-expanded", String(open));
+    toggle?.setAttribute("aria-label", open ? "Close navigation menu" : "Open navigation menu");
+    navigation?.classList.toggle("is-open", open);
+  };
+
+  toggle?.addEventListener("click", () => {
+    setMenuOpen(toggle.getAttribute("aria-expanded") !== "true");
+  });
+
+  navigation?.querySelectorAll("a, button").forEach((item) => {
+    item.addEventListener("click", () => setMenuOpen(false));
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") setMenuOpen(false);
+  });
+</script>
