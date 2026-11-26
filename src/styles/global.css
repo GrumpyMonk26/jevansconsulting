@@ -66,7 +66,7 @@ a {
 }
 
 .wrap {
-  width: min(1120px, 100% - 2.5rem);
+  width: min(1200px, 100% - 2.5rem);
   margin-inline: auto;
 }
 section {
