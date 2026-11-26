@@ -6,35 +6,41 @@ import ContactModal from '../components/ContactModal.astro';
 
 const projects = [
   {
-    name: 'Brightwell Physio',
-    category: 'Physiotherapy clinic',
-    style: 'physio',
-    headline: 'Feel better, move better.',
-    description: 'A calm, welcoming website concept that makes treatments easy to understand and booking the next step feel simple.',
-    details: ['Treatment overview', 'Appointment enquiries', 'Mobile-friendly layout'],
+    name: 'Premier Darts League',
+    category: 'Online darts league',
+    style: 'darts',
+    headline: 'Competitive Online Darts League',
+    href: 'https://premierdartsleague.co.uk/',
+    host: 'premierdartsleague.co.uk',
+    description: 'A bold, dark-themed home for an online darts league, bringing its average-based divisions, weekly fixtures and friendly community together.',
+    details: ['10 divisions', 'Weekly fixtures', 'Average-based play', 'Discord community'],
   },
   {
-    name: 'Oak & Ember Gardens',
-    category: 'Garden design and landscaping',
-    style: 'gardens',
-    headline: 'A garden made for living.',
-    description: 'A natural, image-led concept for a local landscaping business, with clear service information and a simple route to request a quote.',
-    details: ['Service pages', 'Project gallery', 'Quote enquiry form'],
+    name: 'Arreta Care',
+    category: 'Home care provider',
+    style: 'arreta',
+    headline: 'Compassionate care in your own home',
+    href: 'https://arreta.netlify.app/',
+    host: 'arreta.netlify.app',
+    description: 'A reassuring, people-first website for home care, with clear routes to speak with the care team, arrange a call back or get care advice.',
+    details: ['Home care information', 'Recruitment', 'Care advice enquiries'],
   },
   {
-    name: 'North & Nook',
-    category: 'Independent interiors studio',
-    style: 'interiors',
-    headline: 'Make room for home.',
-    description: 'An editorial-style concept for an interiors studio, designed to present its work with space, warmth and a clear point of view.',
-    details: ['Portfolio presentation', 'Studio introduction', 'Consultation enquiries'],
+    name: 'Jevix Consulting',
+    category: 'NetSuite consulting and support',
+    style: 'jevix',
+    headline: 'NetSuite project delivery, development and support that scales with your business.',
+    href: 'https://jevixconsulting.com/',
+    host: 'jevixconsulting.com',
+    description: 'Jevix Consulting helps NetSuite customers deliver improvement projects, build custom solutions, stabilise integrations, and keep their environments moving with dependable expert support.',
+    details: ['Project delivery', 'Custom development', 'Integrations', 'Support packages'],
   },
 ];
 ---
 
 <Layout
   title="Previous project examples | Jevans Consulting"
-  description="Explore three fictional concept websites showing how Jevans Consulting could help small businesses present their services online."
+  description="Explore website projects for Premier Darts League, Arreta Care and Jevix Consulting."
 >
   <div class="wrap">
     <Header />
@@ -43,23 +49,78 @@ const projects = [
         <a class="projects-back" href="/#top">&larr; Back to home</a>
         <span class="projects-eyebrow">A LOOK AT WHAT'S POSSIBLE</span>
         <h1 id="projects-title">Project examples</h1>
-        <p class="projects-lede">Every business has its own story. These concept projects show a few ways thoughtful design can help tell it.</p>
-        <p class="concept-notice"><strong>Concept work:</strong> The businesses and project details on this page are fictional examples, created to demonstrate possible design directions. They are not client projects or claims of completed work.</p>
+        <p class="projects-lede">Every business has its own story. These examples show a few ways thoughtful design can help tell it.</p>
+        <p class="concept-notice"><strong>Previous projects:</strong> A selection of websites created for Jevix Consulting, Arreta Care and Premier Darts League.</p>
       </section>
 
-      <section class="project-grid" aria-label="Fictional concept projects">
-        {projects.map((project, index) => (
+      <section class="project-grid" aria-label="Selected project examples">
+        {projects.map((project) => (
           <article class="project-card">
             <div class:list={['project-art', `project-art--${project.style}`]} aria-hidden="true">
-              <div class="project-browser-bar"><span></span><span></span><span></span><small>concept preview</small></div>
+              <div class="project-browser-bar"><span></span><span></span><span></span><small>{project.host}</small></div>
               <div class="project-preview">
-                <div class="project-preview-brand">{project.name}</div>
-                <div class="project-preview-copy">
-                  <span class="project-preview-kicker">{project.category}</span>
-                  <strong>{project.headline}</strong>
-                  <i></i>
-                </div>
-                <div class="project-preview-shape"></div>
+                {project.style === 'jevix' ? (
+                  <div class="jevix-mock">
+                    <div class="jevix-network" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+                    <div class="jevix-preview-nav">
+                      <img src="/jevix-logo.png" alt="" loading="lazy" />
+                      <span>What we offer&#8964;</span>
+                      <span>About</span>
+                      <b>Contact</b>
+                    </div>
+                    <div class="jevix-preview-hero">
+                      <span class="jevix-preview-kicker">NetSuite specialists</span>
+                      <strong>NetSuite project delivery, development and support that <em>scales with your business</em></strong>
+                      <p>Helping NetSuite customers deliver improvement projects, build custom solutions and keep moving.</p>
+                      <div class="jevix-preview-actions"><b>Book a consultation</b><b>View services</b></div>
+                      <div class="jevix-preview-tags"><span>Project delivery</span><span>Custom development</span><span>Integrations</span></div>
+                    </div>
+                  </div>
+                ) : project.style === 'arreta' ? (
+                  <div class="arreta-mock">
+                    <div class="arreta-preview-nav">
+                      <span class="arreta-preview-brand">Arreta <b>Care</b></span>
+                      <span>Home</span><span>About Us</span><span>Services&#8964;</span><span>Recruitment</span>
+                      <b class="arreta-preview-call">Call Us</b>
+                    </div>
+                    <div class="arreta-preview-hero">
+                      <div class="arreta-preview-scene" aria-hidden="true"><i></i><i></i><i></i></div>
+                      <div class="arreta-preview-panel">
+                        <strong>Compassionate Care In Your Own Home</strong>
+                        <p>Supporting adults with learning and physical challenges and the elderly in their own homes.</p>
+                        <div class="arreta-preview-actions"><b>Speak to Our Care Team</b><b>Arrange a Call Back</b></div>
+                        <small>&#10003; Tailored care plans &nbsp; &#10003; Local teams &nbsp; &#10003; No agency staff</small>
+                      </div>
+                    </div>
+                  </div>
+                ) : project.style === 'darts' ? (
+                  <div class="darts-mock">
+                    <div class="darts-preview-nav">
+                      <div class="darts-logo-mark" aria-hidden="true"><i></i></div>
+                      <div class="darts-logo-type"><strong><span>P</span>DL</strong><small>PREMIER LEAGUE DARTS</small></div>
+                      <span>Home</span><span>League&#8964;</span><span>Statistics</span>
+                      <b>Player Hub</b>
+                    </div>
+                    <div class="darts-preview-hero">
+                      <span class="darts-established">Established 2024</span>
+                      <strong class="darts-title">Premier Darts League</strong>
+                      <b class="darts-subtitle">Competitive Online Darts League</b>
+                      <p>Average based divisions, weekly fixtures and a friendly community.</p>
+                      <div class="darts-preview-actions"><b>Join Our Discord</b><b>Current Season</b></div>
+                      <div class="darts-preview-stats"><span><b>10</b>Divisions</span><span><b>Weekly</b>Fixtures</span><span><b>Average</b>Based</span><span><b>Friendly</b>Community</span></div>
+                    </div>
+                  </div>
+                ) : (
+                  <div class="generic-project-mock">
+                    <div class="project-preview-brand">{project.name}</div>
+                    <div class="project-preview-copy">
+                      <span class="project-preview-kicker">{project.category}</span>
+                      <strong>{project.headline}</strong>
+                      <i></i>
+                    </div>
+                    <div class="project-preview-shape"></div>
+                  </div>
+                )}
               </div>
             </div>
             <div class="project-card-copy">
@@ -68,12 +129,13 @@ const projects = [
                   <span class="project-category">{project.category}</span>
                   <h2>{project.name}</h2>
                 </div>
-                <span class="concept-tag">Concept {index + 1}</span>
+                <span class="concept-tag">Previous project</span>
               </div>
               <p>{project.description}</p>
               <ul>
                 {project.details.map((detail) => <li>{detail}</li>)}
               </ul>
+              {project.href && <a class="project-live-link" href={project.href} target="_blank" rel="noopener noreferrer">View live website <span aria-hidden="true">&rarr;</span></a>}
             </div>
           </article>
         ))}
