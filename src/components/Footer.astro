@@ -6,14 +6,33 @@ interface Props {
 const { name = 'Jevans Consulting' } = Astro.props;
 ---
 
-<footer>
-  <div class="footer-content">
-    <p class="footer-brand">{name}</p>
-    <p>Website design, development and ongoing digital support for small businesses.</p>
-    <p>Based near Cannock Chase, Staffordshire.</p>
+<footer class="site-footer">
+  <div class="footer-main">
+    <div class="footer-intro">
+      <a class="footer-logo" href="#top" aria-label={name + ' home'}>
+        <img src="/jevans-logo.png" alt={name} width="760" height="230" loading="lazy" />
+      </a>
+      <p>Website design, development and ongoing digital support for small businesses.</p>
+      <p class="footer-location">Based near Cannock Chase, Staffordshire.</p>
+    </div>
+
+    <nav class="footer-nav" aria-label="Footer navigation">
+      <h2>Explore</h2>
+      <a href="#about">About</a>
+      <a href="#packages">Website packages</a>
+      <a href="#care">Care plans</a>
+      <a href="#process">How it works</a>
+    </nav>
+
+    <div class="footer-contact">
+      <h2>Have a project in mind?</h2>
+      <p>Tell me what you need and I'll get back to you within one working day.</p>
+      <button type="button" class="btn" data-open-contact>Get in touch</button>
+    </div>
   </div>
 
   <div class="footer-bottom">
-    <p>© {new Date().getFullYear()} {name}. All rights reserved.</p>
+    <p>&copy; {new Date().getFullYear()} {name}. All rights reserved.</p>
+    <a href="#top">Back to top <span aria-hidden="true">&#8593;</span></a>
   </div>
 </footer>
