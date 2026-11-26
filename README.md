@@ -1,4 +1,4 @@
-# Astro Showcase Website
+# Jevans Consulting website
 
 ## Getting started
 
@@ -18,13 +18,7 @@ npm run preview
 
 ## Before publishing
 
-Update the starter business details near the top of `src/pages/index.astro`:
-
-- `name`
-- `email`
-- `audience`
-
-Update the website's production URL in `astro.config.mjs` when your domain is confirmed:
+Set the website's production URL in `astro.config.mjs` when your domain is confirmed:
 
 ```js
 export default defineConfig({
