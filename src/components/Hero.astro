@@ -33,67 +33,55 @@ const { audience } = Astro.props;
     </div>
   </div>
 
-  <!-- Previous project showcase (decorative, hidden from screen readers) -->
-  <div class="browser" aria-hidden="true">
-    <div class="browser-bar">
-      <i></i><i></i><i></i>
-      <span>jevixconsulting.com</span>
-    </div>
-
-    <div class="jx">
-      <svg class="jx-net" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice">
-        <g stroke="#2f6fe0" stroke-opacity=".35" fill="none">
-          <path d="M30 70 L92 118 L68 196" />
-          <path d="M308 38 L352 92 L300 122 Z" />
-          <path d="M338 205 L384 262" />
-          <path d="M54 256 L124 224" />
-        </g>
-        <g fill="#3b9cf5" fill-opacity=".7">
-          <circle cx="30" cy="70" r="2.5" />
-          <circle cx="92" cy="118" r="2" />
-          <circle cx="68" cy="196" r="2" />
-          <circle cx="308" cy="38" r="2.5" />
-          <circle cx="352" cy="92" r="2" />
-          <circle cx="300" cy="122" r="2" />
-          <circle cx="338" cy="205" r="2" />
-          <circle cx="384" cy="262" r="2.5" />
-          <circle cx="54" cy="256" r="2" />
-          <circle cx="124" cy="224" r="2" />
-        </g>
-      </svg>
-
-      <div class="jx-nav">
-        <img class="jx-logo" src="/jevix-logo.png" alt="" width="600" height="179" />
-        <span>What we offer ⌄</span>
-        <span>About</span>
-        <b class="jx-btn sm">Contact</b>
+  <!-- Example website (decorative, hidden from screen readers; the caption is visible) -->
+  <figure class="showcase">
+    <div class="browser" aria-hidden="true">
+      <div class="browser-bar">
+        <i></i><i></i><i></i>
+        <span>yourbusiness.co.uk</span>
+        <em class="browser-badge">Example design</em>
       </div>
 
-      <div class="jx-body">
-        <span class="jx-badge">Previous project</span>
-
-        <h4>
-          NetSuite project delivery, development, and support that
-          <em>scales with your business</em>
-        </h4>
-
-        <p>
-          Jevix Consulting helps NetSuite customers deliver projects,
-          build custom solutions and keep environments moving.
-        </p>
-
-        <div class="jx-actions">
-          <span class="jx-btn">Book a Consultation</span>
-          <span class="jx-btn ghost">View Services</span>
+      <div class="ex">
+        <div class="ex-nav">
+          <span class="ex-brand"><i></i>Brightwell Physio</span>
+          <span>Treatments</span>
+          <span>About</span>
+          <span>Contact</span>
+          <b class="ex-btn">Book now</b>
         </div>
 
-        <div class="jx-pills">
-          <span>Project Delivery</span>
-          <span>Custom Development</span>
-          <span>Integrations</span>
-          <span>Support Packages</span>
+        <div class="ex-hero">
+          <div>
+            <h4>Feel better, move better.</h4>
+            <p>
+              Friendly, expert physiotherapy for aches, injuries
+              and everyday movement.
+            </p>
+            <div class="ex-actions">
+              <span class="ex-btn">Book an appointment</span>
+              <span class="ex-btn ghost">Our treatments</span>
+            </div>
+          </div>
+          <div class="ex-photo"></div>
+        </div>
+
+        <div class="ex-cards">
+          <span class="ex-card"><i></i>Back &amp; neck</span>
+          <span class="ex-card"><i></i>Sports injuries</span>
+          <span class="ex-card"><i></i>Rehabilitation</span>
+        </div>
+
+        <div class="ex-info">
+          <span>Mon–Fri 8am–6pm</span>
+          <span>Free parking</span>
+          <span>Same-week appointments</span>
         </div>
       </div>
     </div>
-  </div>
+
+    <figcaption>
+      Example design: the kind of website I build for small businesses.
+    </figcaption>
+  </figure>
 </section>
