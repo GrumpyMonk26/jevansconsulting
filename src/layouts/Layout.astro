@@ -19,11 +19,15 @@ const canonicalURL = Astro.site ? new URL(Astro.url.pathname, Astro.site) : unde
     {canonicalURL && <>
       <link rel="canonical" href={canonicalURL} />
       <meta property="og:url" content={canonicalURL} />
-      <meta property="og:image" content={new URL('/jevans-logo.png', canonicalURL)} />
-      <meta name="twitter:card" content="summary" />
+      <meta property="og:image" content={new URL('/og-image.png', canonicalURL)} />
+      <meta property="og:image:width" content="1200" />
+      <meta property="og:image:height" content="630" />
+      <meta property="og:image:alt" content="Jevans Consulting: professional websites for small businesses" />
+      <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
-      <meta name="twitter:image" content={new URL('/jevans-logo.png', canonicalURL)} />
+      <meta name="twitter:image" content={new URL('/og-image.png', canonicalURL)} />
+      <meta name="twitter:image:alt" content="Jevans Consulting: professional websites for small businesses" />
     </>}
     <title>{title}</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />

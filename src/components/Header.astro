@@ -57,6 +57,9 @@ const homeHref = Astro.url.pathname === '/' ? '' : '/';
   });
 
   document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape") setMenuOpen(false);
+    if (event.key === "Escape" && toggle?.getAttribute("aria-expanded") === "true") {
+      setMenuOpen(false);
+      toggle.focus();
+    }
   });
 </script>

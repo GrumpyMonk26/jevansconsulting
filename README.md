@@ -16,17 +16,11 @@ npm run build
 npm run preview
 ```
 
-## Before publishing
+## Production SEO
 
-Set the website's production URL in `astro.config.mjs` when your domain is confirmed:
+The production URL is configured as `https://jevansconsulting.co.uk` in `astro.config.mjs`. Update it there if the canonical domain changes. It is used for canonical and social metadata and to generate `/sitemap.xml`.
 
-```js
-export default defineConfig({
-  site: 'https://www.example.com',
-});
-```
-
-The configured `site` value allows the shared layout to output canonical URLs.
+`public/robots.txt` points search crawlers to the generated sitemap.
 
 ## Project structure
 

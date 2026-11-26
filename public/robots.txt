@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://jevansconsulting.co.uk/sitemap.xml
