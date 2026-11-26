@@ -1029,6 +1029,7 @@ body {
 /* Section backgrounds */
 section[aria-labelledby="what"],
 #about,
+#packages,
 #care,
 #process,
 #contact {
@@ -1037,9 +1038,15 @@ section[aria-labelledby="what"],
   clip-path: inset(0 -100vmax);
 }
 
-/* About – white background */
-#about {
+/* About and packages – white background */
+#about,
+#packages {
   --band: var(--white);
+}
+
+/* soft shadow so the white package cards stand out on white */
+#packages .tier:not(.pick) {
+  box-shadow: 0 18px 40px -28px rgba(16, 26, 51, 0.35);
 }
 
 /* Services and process – subtle grey background */
