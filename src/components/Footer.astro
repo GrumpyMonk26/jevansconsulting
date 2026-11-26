@@ -4,12 +4,13 @@ interface Props {
 }
 
 const { name = 'Jevans Consulting' } = Astro.props;
+const homeHref = Astro.url.pathname === '/' ? '' : '/';
 ---
 
 <footer class="site-footer">
   <div class="footer-main">
     <div class="footer-intro">
-      <a class="footer-logo" href="#top" aria-label={name + ' home'}>
+      <a class="footer-logo" href={homeHref + '#top'} aria-label={name + ' home'}>
         <img src="/jevans-logo.png" alt={name} width="760" height="230" loading="lazy" />
       </a>
       <p>Website design, development and ongoing digital support for small businesses.</p>
@@ -18,10 +19,11 @@ const { name = 'Jevans Consulting' } = Astro.props;
 
     <nav class="footer-nav" aria-label="Footer navigation">
       <h2>Explore</h2>
-      <a href="#about">About</a>
-      <a href="#packages">Website packages</a>
-      <a href="#care">Care plans</a>
-      <a href="#process">How it works</a>
+      <a href="/projects/">Previous projects</a>
+      <a href={homeHref + '#about'}>About</a>
+      <a href={homeHref + '#packages'}>Website packages</a>
+      <a href={homeHref + '#care'}>Care plans</a>
+      <a href={homeHref + '#process'}>How it works</a>
     </nav>
 
     <div class="footer-contact">
@@ -33,6 +35,6 @@ const { name = 'Jevans Consulting' } = Astro.props;
 
   <div class="footer-bottom">
     <p>&copy; {new Date().getFullYear()} {name}. All rights reserved.</p>
-    <a href="#top">Back to top <span aria-hidden="true">&#8593;</span></a>
+    <a href={homeHref + '#top'}>Back to top <span aria-hidden="true">&#8593;</span></a>
   </div>
 </footer>

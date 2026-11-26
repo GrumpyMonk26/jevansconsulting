@@ -1,0 +1,94 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import ContactModal from '../components/ContactModal.astro';
+
+const projects = [
+  {
+    name: 'Brightwell Physio',
+    category: 'Physiotherapy clinic',
+    style: 'physio',
+    headline: 'Feel better, move better.',
+    description: 'A calm, welcoming website concept that makes treatments easy to understand and booking the next step feel simple.',
+    details: ['Treatment overview', 'Appointment enquiries', 'Mobile-friendly layout'],
+  },
+  {
+    name: 'Oak & Ember Gardens',
+    category: 'Garden design and landscaping',
+    style: 'gardens',
+    headline: 'A garden made for living.',
+    description: 'A natural, image-led concept for a local landscaping business, with clear service information and a simple route to request a quote.',
+    details: ['Service pages', 'Project gallery', 'Quote enquiry form'],
+  },
+  {
+    name: 'North & Nook',
+    category: 'Independent interiors studio',
+    style: 'interiors',
+    headline: 'Make room for home.',
+    description: 'An editorial-style concept for an interiors studio, designed to present its work with space, warmth and a clear point of view.',
+    details: ['Portfolio presentation', 'Studio introduction', 'Consultation enquiries'],
+  },
+];
+---
+
+<Layout
+  title="Previous project examples | Jevans Consulting"
+  description="Explore three fictional concept websites showing how Jevans Consulting could help small businesses present their services online."
+>
+  <div class="wrap">
+    <Header />
+    <main id="top" class="projects-page">
+      <section class="projects-intro" aria-labelledby="projects-title">
+        <a class="projects-back" href="/#top">&larr; Back to home</a>
+        <span class="projects-eyebrow">A LOOK AT WHAT'S POSSIBLE</span>
+        <h1 id="projects-title">Project examples</h1>
+        <p class="projects-lede">Every business has its own story. These concept projects show a few ways thoughtful design can help tell it.</p>
+        <p class="concept-notice"><strong>Concept work:</strong> The businesses and project details on this page are fictional examples, created to demonstrate possible design directions. They are not client projects or claims of completed work.</p>
+      </section>
+
+      <section class="project-grid" aria-label="Fictional concept projects">
+        {projects.map((project, index) => (
+          <article class="project-card">
+            <div class:list={['project-art', `project-art--${project.style}`]} aria-hidden="true">
+              <div class="project-browser-bar"><span></span><span></span><span></span><small>concept preview</small></div>
+              <div class="project-preview">
+                <div class="project-preview-brand">{project.name}</div>
+                <div class="project-preview-copy">
+                  <span class="project-preview-kicker">{project.category}</span>
+                  <strong>{project.headline}</strong>
+                  <i></i>
+                </div>
+                <div class="project-preview-shape"></div>
+              </div>
+            </div>
+            <div class="project-card-copy">
+              <div class="project-card-heading">
+                <div>
+                  <span class="project-category">{project.category}</span>
+                  <h2>{project.name}</h2>
+                </div>
+                <span class="concept-tag">Concept {index + 1}</span>
+              </div>
+              <p>{project.description}</p>
+              <ul>
+                {project.details.map((detail) => <li>{detail}</li>)}
+              </ul>
+            </div>
+          </article>
+        ))}
+      </section>
+
+      <section class="projects-cta" aria-labelledby="projects-cta-title">
+        <div>
+          <span class="projects-eyebrow">YOUR BUSINESS, YOUR PROJECT</span>
+          <h2 id="projects-cta-title">Have something in mind?</h2>
+          <p>Let's talk about what your website needs to do and find the right direction for your business.</p>
+        </div>
+        <button type="button" class="btn" data-open-contact>Talk about your project</button>
+      </section>
+    </main>
+    <Footer />
+  </div>
+  <ContactModal />
+</Layout>

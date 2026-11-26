@@ -5,10 +5,11 @@ interface Props {
 }
 
 const { logoAlt = 'Jevans Consulting' } = Astro.props;
+const homeHref = Astro.url.pathname === '/' ? '' : '/';
 ---
 
 <header class="nav">
-  <a class="brand" href="#top" aria-label={`${logoAlt} home`}>
+  <a class="brand" href={homeHref + '#top'} aria-label={logoAlt + ' home'}>
     <img
       src="/jevans-logo.png"
       alt={logoAlt}
@@ -17,9 +18,10 @@ const { logoAlt = 'Jevans Consulting' } = Astro.props;
   </a>
 
   <nav aria-label="Main navigation">
-    <a href="#packages">Packages</a>
-    <a href="#care">Care plans</a>
-    <a href="#process">Our process</a>
+    <a href="/projects/">Previous projects</a>
+    <a href={homeHref + '#packages'}>Packages</a>
+    <a href={homeHref + '#care'}>Care plans</a>
+    <a href={homeHref + '#process'}>Our process</a>
     <button type="button" class="btn" data-open-contact>
   Let's talk
 </button>
